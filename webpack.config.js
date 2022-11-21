@@ -4,22 +4,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
-const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
 
 module.exports = {
   mode,
-  target,
   devtool,
   devServer: {
     port: 3000,
     open: true,
     hot: true,
   },
-  entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
+  entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'webpack/index.js')],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    clean: false,
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]'
   },
